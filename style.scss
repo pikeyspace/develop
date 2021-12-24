@@ -1,124 +1,306 @@
-@import "_media";
-@import "_fonts";
-html {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul,
-li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0;
-    font-size: inherit;
-}
-
-body,
-html {
-    padding: 0;
-    margin: 0;
-}
-
-.wrapper {
-    width: 2500px;
-    margin: 30% auto;
-    padding: 0 512px;
-}
-
-.bottom_bar {
-    position: relative;
-    width: 2442px;
-    height: 424px;
-    background-image: url(../images/bottom-bar-bg.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.btn_info {
-    position: absolute;
-    top: 50px;
-    left: 120px;
-    border-radius: 50%;
-    background-image: url(../images/btn-info-bg.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 112px;
-    height: 112px;
-    &-button {
-        position: absolute;
-        border: none;
-        display: block;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background-image: url(../images/btn-info-normal.png);
+    @import "_media";
+    @import "_fonts";
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
+    html {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+    
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-size: inherit;
+    }
+    
+    body,
+    html {
+        padding: 0;
+        margin: 0;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 600;
+    }
+    
+    button {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .wrapper {
+        width: 2500px;
+        margin: 30% auto;
+        padding: 0 512px;
+    }
+    
+    .bottom_bar {
+        position: relative;
+        width: 2587px;
+        height: 403px;
+        background-image: url(../images/bottom-bar-bg.png);
         background-repeat: no-repeat;
         background-size: contain;
-        transition: all 0.3s;
-        top: 6px;
-        left: 6px;
-        &:hover {
-            background-image: url(../images/btn-info-hover.png);
+    }
+    
+    .info {
+        position: absolute;
+        top: 63px;
+        left: 130px;
+        border-radius: 50%;
+        background-image: url(../images/btn-info-bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 112px;
+        height: 112px;
+        &-btn {
+            position: absolute;
+            border: none;
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-image: url(../images/btn-info-normal.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: all 0.3s;
+            top: 6px;
+            left: 6px;
+            &:hover {
+                background-image: url(../images/btn-info-hover.png);
+                &::before {
+                    position: absolute;
+                    content: '';
+                    background-image: url(../images/info_sign-hover.png);
+                    background-repeat: no-repeat;
+                    width: 22px;
+                    height: 65px;
+                    top: 17px;
+                    left: 39px;
+                }
+            }
             &::before {
                 position: absolute;
                 content: '';
-                background-image: url(../images/info_sign-hover.png);
+                background-image: url(../images/info_sign-normal.png);
                 background-repeat: no-repeat;
-                width: 20px;
+                width: 22px;
                 height: 65px;
                 top: 17px;
                 left: 39px;
             }
-        }
-        &::before {
-            position: absolute;
-            content: '';
-            background-image: url(../images/info_sign-normal.png);
-            background-repeat: no-repeat;
-            width: 20px;
-            height: 65px;
-            top: 17px;
-            left: 39px;
-        }
-        &.active {
-            background-image: url(../images/btn-info-click.png);
-            &::before {
-                background-image: url(../images/info_sign-hover.png);
+            &.active {
+                background-image: url(../images/btn-info-click.png);
+                &::before {
+                    background-image: url(../images/info_sign-hover.png);
+                }
             }
         }
     }
-}
-
-.totalbet_box {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 24.38rem;
-    height: 6.25rem;
-    background-image: url(../images/totalbet-bg.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 3.9rem;
-    left: 15.19rem;
-}
+    
+    .totalbet {
+        position: absolute;
+        width: 398px;
+        height: 108px;
+        background-image: url(../images/totalbet-bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 68px;
+        left: 253px;
+        &-btn {
+            &-minus {
+                position: absolute;
+                background-color: transparent;
+                display: block;
+                border: none;
+                width: 86px;
+                height: 86px;
+                border-radius: 50%;
+                background-image: url(../images/btn-totalbet-normal.png);
+                background-repeat: no-repeat;
+                background-size: contain;
+                transition: all 0.3s;
+                top: 11px;
+                left: 6px;
+                &::before {
+                    position: absolute;
+                    content: '';
+                    background-image: url(../images/minus-dim.png);
+                    background-repeat: no-repeat;
+                    width: 40px;
+                    height: 14px;
+                    top: 36px;
+                    left: 24px;
+                }
+                &:hover {
+                    background-image: url(../images/btn-totalbet-hover.png);
+                    &::before {
+                        background-image: url(../images/minus.png);
+                    }
+                }
+            }
+            &-plus {
+                position: absolute;
+                display: block;
+                border: none;
+                width: 86px;
+                height: 86px;
+                border-radius: 50%;
+                background-color: transparent;
+                background-image: url(../images/btn-totalbet-normal.png);
+                background-repeat: no-repeat;
+                background-size: contain;
+                transition: all 0.3s;
+                top: 11px;
+                right: 6px;
+                &::before {
+                    position: absolute;
+                    content: '';
+                    background-image: url(../images/plus-dim.png);
+                    background-repeat: no-repeat;
+                    width: 42px;
+                    height: 42px;
+                    top: 23px;
+                    left: 23px;
+                }
+                &:hover {
+                    background-image: url(../images/btn-totalbet-hover.png);
+                    &::before {
+                        background-image: url(../images/plus.png);
+                    }
+                }
+            }
+        }
+        &-content {
+            text-align: center;
+            &-title {
+                font-size: 36px;
+                color: #ff6972;
+            }
+            &-text {
+                color: #ffd100;
+                font-weight: 600;
+                font-size: 36px;
+                & span {
+                    color: #ffd100;
+                    font-weight: 600;
+                    font-size: 36px;
+                }
+            }
+        }
+    }
+    
+    .coin {
+        position: absolute;
+        width: 208px;
+        height: 108px;
+        background-image: url(../images/coin-bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: 68px;
+        left: 660px;
+        &-content {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            &-title {
+                font-size: 36px;
+                color: #ff6972;
+            }
+            &-text {
+                color: #ffd100;
+                font-weight: 600;
+                font-size: 36px;
+                & span {
+                    color: #ffd100;
+                    font-weight: 600;
+                    font-size: 36px;
+                }
+            }
+        }
+    }
+    
+    .win {
+        position: absolute;
+        width: 871px;
+        height: 198px;
+        background-image: url(../images/win-bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: 20px;
+        left: 853px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &-content-title {
+            font-size: 100px;
+            color: #ffd100;
+            font-weight: 700;
+            padding-bottom: 20px;
+        }
+    }
+    
+    .spin {
+        &-btn {
+            border: none;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            height: 342px;
+            width: 342px;
+            background-color: transparent;
+            background-image: url(../images/spin-btn-disable.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: all .3s;
+            top: -47px;
+            right: 127px;
+            &:hover {
+                background-image: url(../images/spin-btn-hover.png);
+                &::before {
+                    background-image: url(../images/spin-arrows.png);
+                }
+            }
+            &::before {
+                position: absolute;
+                content: '';
+                background-image: url(../images/spin-arrows-dim.png);
+                background-repeat: no-repeat;
+                width: 232px;
+                height: 190px;
+                top: 67px;
+                left: 59px;
+            }
+            &.active {
+                background-image: url(../images/spin-btn.png);
+                &::before {
+                    background-image: url(../images/spin-arrows.png);
+                }
+            }
+        }
+    }
