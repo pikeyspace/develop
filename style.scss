@@ -1,0 +1,124 @@
+@import "_media";
+@import "_fonts";
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-size: inherit;
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    width: 2500px;
+    margin: 30% auto;
+    padding: 0 512px;
+}
+
+.bottom_bar {
+    position: relative;
+    width: 2442px;
+    height: 424px;
+    background-image: url(../images/bottom-bar-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.btn_info {
+    position: absolute;
+    top: 50px;
+    left: 120px;
+    border-radius: 50%;
+    background-image: url(../images/btn-info-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 112px;
+    height: 112px;
+    &-button {
+        position: absolute;
+        border: none;
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-image: url(../images/btn-info-normal.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: all 0.3s;
+        top: 6px;
+        left: 6px;
+        &:hover {
+            background-image: url(../images/btn-info-hover.png);
+            &::before {
+                position: absolute;
+                content: '';
+                background-image: url(../images/info_sign-hover.png);
+                background-repeat: no-repeat;
+                width: 20px;
+                height: 65px;
+                top: 17px;
+                left: 39px;
+            }
+        }
+        &::before {
+            position: absolute;
+            content: '';
+            background-image: url(../images/info_sign-normal.png);
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 65px;
+            top: 17px;
+            left: 39px;
+        }
+        &.active {
+            background-image: url(../images/btn-info-click.png);
+            &::before {
+                background-image: url(../images/info_sign-hover.png);
+            }
+        }
+    }
+}
+
+.totalbet_box {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 24.38rem;
+    height: 6.25rem;
+    background-image: url(../images/totalbet-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 3.9rem;
+    left: 15.19rem;
+}
