@@ -265,6 +265,141 @@
         }
     }
     
+    .checkbox {
+        position: absolute;
+        width: 168px;
+        height: 106px;
+        background-image: url(../images/turbo-bg-red.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: 68px;
+        right: 706px;
+        transition: all .3s;
+        & input {
+            display: none;
+            &:checked+.checkbox-facke {
+                background-image: url(../images/btn-turbo.png);
+                top: 10px;
+                &::before {
+                    background-image: url(../images/turbo.png);
+                }
+            }
+        }
+        &-facke {
+            position: absolute;
+            width: 152px;
+            height: 59px;
+            background-image: url(../images/btn-turbo-disable.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            top: 44px;
+            right: 8px;
+            transition: all .3s;
+            &::before {
+                position: absolute;
+                content: '';
+                background-image: url(../images/turbo-dim.png);
+                background-repeat: no-repeat;
+                width: 105px;
+                height: 26px;
+                top: 14px;
+                left: 25px;
+            }
+            &:hover {
+                background-image: url(../images/btn-turbo-hover.png);
+                &::before {
+                    background-image: url(../images/turbo.png);
+                }
+            }
+        }
+        &.active {
+            background-image: url(../images/turbo-bg-green.png);
+        }
+    }
+    
+    .auto {
+        position: absolute;
+        width: 388px;
+        height: 385px;
+        background-image: url(../images/auto-bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        bottom: 230px;
+        right: 290px;
+        z-index: 1;
+        &-btn {
+            background-color: transparent;
+            border: none;
+            border-radius: 50px;
+            position: absolute;
+            width: 388px;
+            height: 100px;
+            background-image: url(../images/btn-auto-disable.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            bottom: 7px;
+            right: 7px;
+            transition: all .3s;
+            &::before {
+                position: absolute;
+                content: '';
+                background-image: url(../images/auto-dim.png);
+                background-repeat: no-repeat;
+                width: 100px;
+                height: 31px;
+                top: 33px;
+                left: 66px;
+            }
+            &:hover {
+                background-image: url(../images/btn-auto-hover.png);
+                &::before {
+                    background-image: url(../images/auto.png);
+                }
+            }
+            &-inner {
+                position: absolute;
+                width: 402px;
+                height: 114px;
+                background-image: url(../images/btn-auto-bg.png);
+                background-repeat: no-repeat;
+                background-size: contain;
+                bottom: 0;
+                right: -7px;
+                z-index: 1;
+            }
+            &.active {
+                background-image: url(../images/btn-auto.png);
+                &::before {
+                    background-image: url(../images/auto.png);
+                }
+            }
+        }
+        &-title {
+            text-transform: uppercase;
+            font-size: 32px;
+            color: #ffd100;
+            padding-left: 64px;
+            margin-top: 19px;
+            &::before {
+                position: absolute;
+                content: '';
+                background-image: url(../images/auto-title-sign.png);
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 33px;
+                height: 30px;
+                top: 27px;
+                left: 28px;
+            }
+        }
+        &-list {
+            text-transform: uppercase;
+            font-size: 32px;
+            color: #ffd100;
+            padding-left: 30px;
+        }
+    }
+    
     .spin {
         &-btn {
             border: none;
@@ -280,6 +415,7 @@
             transition: all .3s;
             top: -47px;
             right: 127px;
+            z-index: 2;
             &:hover {
                 background-image: url(../images/spin-btn-hover.png);
                 &::before {
