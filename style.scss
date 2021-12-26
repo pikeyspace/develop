@@ -41,6 +41,10 @@
         font-weight: 600;
     }
     
+    body {
+        background-color: #6a3505;
+    }
+    
     button {
         padding: 0;
         margin: 0;
@@ -48,8 +52,8 @@
     
     .wrapper {
         width: 2500px;
-        margin: 30% auto;
-        padding: 0 512px;
+        margin: 0 auto;
+        margin-top: 40vh;
     }
     
     .bottom_bar {
@@ -272,6 +276,23 @@
             color: #ffd100;
             font-weight: 700;
             padding-bottom: 20px;
+            &::before {
+                position: absolute;
+                content: 'GOOD LUCK !';
+                width: 100%;
+                height: auto;
+                top: 15px;
+                left: 105px;
+            }
+            &.active {
+                &::before {
+                    content: '¥7,870,590';
+                    width: 100%;
+                    height: auto;
+                    top: 15px;
+                    left: 190px;
+                }
+            }
         }
     }
     
@@ -338,6 +359,17 @@
         bottom: 230px;
         right: 290px;
         z-index: 1;
+        &-checkbox {
+            & input {
+                display: none;
+                &:checked+.auto-btn {
+                    background-image: url(../images/btn-auto-click.png);
+                    &::before {
+                        background-image: url(../images/auto.png);
+                    }
+                }
+            }
+        }
         &-btn {
             background-color: transparent;
             border: none;
@@ -375,7 +407,7 @@
                 background-image: url(../images/btn-auto-bg.png);
                 background-repeat: no-repeat;
                 background-size: contain;
-                bottom: 0;
+                bottom: -6px;
                 right: -7px;
                 z-index: 1;
             }
@@ -409,6 +441,13 @@
             font-size: 32px;
             color: #ffd100;
             padding-left: 30px;
+            &-item {
+                transition: all .3s;
+                cursor: pointer;
+                &:hover {
+                    color: #fff;
+                }
+            }
         }
     }
     
@@ -428,7 +467,6 @@
             top: -47px;
             right: 127px;
             z-index: 2;
-            cursor: pointer;
             &:hover {
                 background-image: url(../images/spin-btn-hover.png);
                 &::before {
@@ -440,9 +478,10 @@
                 content: '';
                 background-image: url(../images/spin-arrows-dim.png);
                 background-repeat: no-repeat;
+                background-position: center;
                 width: 232px;
-                height: 190px;
-                top: 76px;
+                height: 232px;
+                top: 55px;
                 left: 55px;
             }
             &.active {
@@ -450,6 +489,41 @@
                 &::before {
                     background-image: url(../images/spin-arrows.png);
                     animation: rotation 1s ease-in-out infinite;
+                }
+            }
+            &.active5 {
+                background-image: url(../images/spin-btn.png);
+                &::before {
+                    background-image: url(../images/spin-arrows.png);
+                    animation: rotation 1s ease-in-out round($number: 5);
+                }
+            }
+            &.active10 {
+                background-image: url(../images/spin-btn.png);
+                &::before {
+                    background-image: url(../images/spin-arrows.png);
+                    animation: rotation 1s ease-in-out round($number: 10);
+                }
+            }
+            &.active15 {
+                background-image: url(../images/spin-btn.png);
+                &::before {
+                    background-image: url(../images/spin-arrows.png);
+                    animation: rotation 1s ease-in-out round($number: 15);
+                }
+            }
+            &.active20 {
+                background-image: url(../images/spin-btn.png);
+                &::before {
+                    background-image: url(../images/spin-arrows.png);
+                    animation: rotation 1s ease-in-out round($number: 20);
+                }
+            }
+            &.active25 {
+                background-image: url(../images/spin-btn.png);
+                &::before {
+                    background-image: url(../images/spin-arrows.png);
+                    animation: rotation 1s ease-in-out round($number: 25);
                 }
             }
         }
