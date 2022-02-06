@@ -1,566 +1,665 @@
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
-    html {
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-    }
-    
-    *,
-    *::before,
-    *::after {
-        box-sizing: inherit;
-    }
-    
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-    
-    ul,
-    li {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-    
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 0;
-        font-size: inherit;
-    }
-    
-    body,
-    html {
-        padding: 0;
-        margin: 0;
-        font-family: 'Noto Sans', sans-serif;
-        font-weight: 600;
-    }
-    
-    body {
-        background-color: #6a3505;
-    }
-    
-    button {
-        padding: 0;
-        margin: 0;
-    }
-    
-    .wrapper {
-        width: 2500px;
-        margin: 0 auto;
-        margin-top: 40vh;
-    }
-    
-    .bottom_bar {
-        position: relative;
-        width: 2587px;
-        height: 403px;
-        background-image: url(../images/bottom-bar-bg.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-    
-    .info {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap');
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+@function vw($value,
+$base: 3140) {
+    @return calc($value / $base * 100vw);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-size: inherit;
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+}
+
+body {
+    background-color: #6a3505;
+}
+
+button {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    width: vw(2500);
+    margin: 0 auto;
+    margin-top: 40vh;
+}
+
+.bottom_bar {
+    position: relative;
+    width: vw(2587);
+    height: vw(403);
+    background-image: url(../images/bottom-bar-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.info {
+    position: absolute;
+    top: vw(63);
+    left: vw(130);
+    &-btn {
         position: absolute;
-        top: 63px;
-        left: 130px;
+        border: none;
+        display: block;
+        width: vw(100);
+        height: vw(100);
         border-radius: 50%;
-        background-image: url(../images/btn-info-bg.png);
+        background-color: transparent;
+        background-image: url(../images/info-btn-norm.png);
         background-repeat: no-repeat;
         background-size: contain;
-        width: 112px;
-        height: 112px;
-        &-btn {
+        transition: all 0.3s;
+        top: vw(6);
+        left: vw(6);
+        cursor: pointer;
+        &:hover {
+            background-image: url(../images/info_btn-hover.png);
+            &::before {
+                position: absolute;
+                content: '';
+                background-image: url(../images/info_sign-hover.png);
+                background-repeat: no-repeat;
+                width: vw(22);
+                height: vw(65);
+                top: vw(17);
+                left: vw(39);
+            }
+        }
+        &.disable {
+            background-image: url(../images/info-btn-disable.png);
+            pointer-events: none;
+        }
+        &::before {
             position: absolute;
-            border: none;
+            content: '';
+            background-image: url(../images/info_sign-normal.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: vw(22);
+            height: vw(65);
+            top: vw(17);
+            left: vw(39);
+        }
+        &.active {
+            background-image: url(../images/info-btn-active.png);
+            &::before {
+                background-image: url(../images/info_sign-hover.png);
+            }
+        }
+    }
+}
+
+.totalbet {
+    position: absolute;
+    width: vw(398);
+    height: vw(108);
+    background-image: url(../images/totalbet-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: vw(68);
+    left: vw(253);
+    &-btn {
+        &-minus {
+            position: absolute;
+            background-color: transparent;
             display: block;
-            width: 100px;
-            height: 100px;
+            border: none;
+            width: vw(86);
+            height: vw(86);
             border-radius: 50%;
-            background-image: url(../images/btn-info-normal.png);
+            background-image: url(../images/totalbet-btn-normal.png);
             background-repeat: no-repeat;
             background-size: contain;
             transition: all 0.3s;
-            top: 6px;
-            left: 6px;
+            top: vw(11);
+            left: vw(6);
             cursor: pointer;
-            &:hover {
-                background-image: url(../images/btn-info-hover.png);
-                &::before {
-                    position: absolute;
-                    content: '';
-                    background-image: url(../images/info_sign-hover.png);
-                    background-repeat: no-repeat;
-                    width: 22px;
-                    height: 65px;
-                    top: 17px;
-                    left: 39px;
-                }
-            }
             &::before {
                 position: absolute;
                 content: '';
-                background-image: url(../images/info_sign-normal.png);
-                background-repeat: no-repeat;
-                width: 22px;
-                height: 65px;
-                top: 17px;
-                left: 39px;
-            }
-            &.active {
-                background-image: url(../images/btn-info-click.png);
-                &::before {
-                    background-image: url(../images/info_sign-hover.png);
-                }
-            }
-        }
-    }
-    
-    .totalbet {
-        position: absolute;
-        width: 398px;
-        height: 108px;
-        background-image: url(../images/totalbet-bg.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 68px;
-        left: 253px;
-        &-btn {
-            &-minus {
-                position: absolute;
-                background-color: transparent;
-                display: block;
-                border: none;
-                width: 86px;
-                height: 86px;
-                border-radius: 50%;
-                background-image: url(../images/btn-totalbet-normal.png);
+                background-image: url(../images/minus-dim.png);
                 background-repeat: no-repeat;
                 background-size: contain;
-                transition: all 0.3s;
-                top: 11px;
-                left: 6px;
-                cursor: pointer;
+                width: vw(40);
+                height: vw(14);
+                top: vw(36);
+                left: vw(24);
+            }
+            &:hover {
+                background-image: url(../images/totalbet-btn-hover.png);
                 &::before {
-                    position: absolute;
-                    content: '';
-                    background-image: url(../images/minus-dim.png);
-                    background-repeat: no-repeat;
-                    width: 40px;
-                    height: 14px;
-                    top: 36px;
-                    left: 24px;
-                }
-                &:hover {
-                    background-image: url(../images/btn-totalbet-hover.png);
-                    &::before {
-                        background-image: url(../images/minus.png);
-                    }
+                    background-image: url(../images/minus.png);
                 }
             }
-            &-plus {
-                position: absolute;
-                display: block;
-                border: none;
-                width: 86px;
-                height: 86px;
-                border-radius: 50%;
-                background-color: transparent;
-                background-image: url(../images/btn-totalbet-normal.png);
-                background-repeat: no-repeat;
-                background-size: contain;
-                transition: all 0.3s;
-                top: 11px;
-                right: 6px;
-                cursor: pointer;
-                &::before {
-                    position: absolute;
-                    content: '';
-                    background-image: url(../images/plus-dim.png);
-                    background-repeat: no-repeat;
-                    width: 42px;
-                    height: 42px;
-                    top: 23px;
-                    left: 23px;
-                }
-                &:hover {
-                    background-image: url(../images/btn-totalbet-hover.png);
-                    &::before {
-                        background-image: url(../images/plus.png);
-                    }
-                }
+            &.disable {
+                background-image: url(../images/totalbet-btn-disable.png);
+                pointer-events: none;
             }
         }
-        &-content {
-            text-align: center;
-            &-title {
-                font-size: 36px;
-                color: #ff6972;
-            }
-            &-text {
-                position: relative;
-                color: #ffd100;
-                font-weight: 600;
-                font-size: 36px;
-                padding-left: 35px;
-                &::before {
-                    position: absolute;
-                    content: '¥';
-                    font-size: 36px;
-                    font-weight: 600;
-                    color: #ffd100;
-                    left: 60px;
-                }
-            }
-        }
-    }
-    
-    .coin {
-        position: absolute;
-        width: 208px;
-        height: 108px;
-        background-image: url(../images/coin-bg.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        top: 68px;
-        left: 660px;
-        &-content {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            align-items: center;
-            &-title {
-                font-size: 36px;
-                color: #ff6972;
-            }
-            &-text {
-                color: #ffd100;
-                font-weight: 600;
-                font-size: 36px;
-                padding-left: 35px;
-                &::before {
-                    position: absolute;
-                    content: '¥';
-                    font-size: 36px;
-                    font-weight: 600;
-                    color: #ffd100;
-                    left: 60px;
-                }
-            }
-        }
-    }
-    
-    .win {
-        position: absolute;
-        width: 871px;
-        height: 198px;
-        background-image: url(../images/win-bg.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        top: 20px;
-        left: 853px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        &-content-title {
-            font-size: 100px;
-            color: #ffd100;
-            font-weight: 700;
-            padding-bottom: 20px;
-            &::before {
-                position: absolute;
-                content: 'GOOD LUCK !';
-                width: 100%;
-                height: auto;
-                top: 15px;
-                left: 105px;
-            }
-            &.active {
-                &::before {
-                    content: '¥7,870,590';
-                    width: 100%;
-                    height: auto;
-                    top: 15px;
-                    left: 190px;
-                }
-            }
-        }
-    }
-    
-    .checkbox {
-        position: absolute;
-        width: 168px;
-        height: 106px;
-        background-image: url(../images/turbo-bg-red.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        top: 68px;
-        right: 706px;
-        transition: all .3s;
-        cursor: pointer;
-        & input {
-            display: none;
-            &:checked+.checkbox-facke {
-                background-image: url(../images/btn-turbo.png);
-                top: 10px;
-                &::before {
-                    background-image: url(../images/turbo.png);
-                }
-            }
-        }
-        &-facke {
+        &-plus {
             position: absolute;
-            width: 152px;
-            height: 59px;
-            background-image: url(../images/btn-turbo-disable.png);
+            display: block;
+            border: none;
+            width: vw(86);
+            height: vw(86);
+            border-radius: 50%;
+            background-color: transparent;
+            background-image: url(../images/totalbet-btn-normal.png);
             background-repeat: no-repeat;
             background-size: contain;
-            top: 44px;
-            right: 8px;
-            transition: all .3s;
+            transition: all 0.3s;
+            top: vw(11);
+            right: vw(6);
+            cursor: pointer;
             &::before {
                 position: absolute;
                 content: '';
-                background-image: url(../images/turbo-dim.png);
+                background-image: url(../images/plus-dim.png);
                 background-repeat: no-repeat;
-                width: 105px;
-                height: 26px;
-                top: 14px;
-                left: 25px;
+                background-size: contain;
+                width: vw(42);
+                height: vw(42);
+                top: vw(23);
+                left: vw(23);
             }
             &:hover {
-                background-image: url(../images/btn-turbo-hover.png);
+                background-image: url(../images/totalbet-btn-hover.png);
                 &::before {
-                    background-image: url(../images/turbo.png);
+                    background-image: url(../images/plus.png);
                 }
+            }
+            &.disable {
+                background-image: url(../images/totalbet-btn-disable.png);
+                pointer-events: none;
+            }
+        }
+    }
+    &-content {
+        text-align: center;
+        &-title {
+            font-size: vw(36);
+            color: #ff6972;
+        }
+        &-text {
+            position: relative;
+            color: #ffd100;
+            font-weight: 600;
+            font-size: vw(36);
+            padding-left: vw(35);
+            &::before {
+                position: absolute;
+                content: '¥';
+                font-size: vw(36);
+                font-weight: 600;
+                color: #ffd100;
+                left: vw(60);
+            }
+        }
+    }
+}
+
+.coin {
+    position: absolute;
+    width: vw(208);
+    height: vw(108);
+    background-image: url(../images/coin-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: vw(68);
+    left: vw(660);
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        &-title {
+            font-size: vw(36);
+            color: #ff6972;
+        }
+        &-text {
+            color: #ffd100;
+            font-weight: 600;
+            font-size: vw(36);
+            padding-left: vw(35);
+            &::before {
+                position: absolute;
+                content: '¥';
+                font-size: vw(36);
+                font-weight: 600;
+                color: #ffd100;
+                left: vw(60);
+            }
+        }
+    }
+}
+
+.win {
+    position: absolute;
+    width: vw(871);
+    height: vw(198);
+    background-image: url(../images/win-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: vw(20);
+    left: vw(853);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &-content-title {
+        font-size: vw(100);
+        color: #ffd100;
+        font-weight: 700;
+        padding-bottom: vw(20);
+        &::before {
+            position: absolute;
+            content: 'GOOD LUCK !';
+            width: 100%;
+            height: auto;
+            top: vw(15);
+            left: vw(105);
+        }
+        &.active {
+            &::before {
+                content: '¥7,870,590';
+                width: 100%;
+                height: auto;
+                top: vw(15);
+                left: vw(190);
+            }
+        }
+    }
+}
+
+.checkbox {
+    position: absolute;
+    width: vw(168);
+    height: vw(106);
+    background-image: url(../images/turbo-bg-red.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: vw(68);
+    right: vw(706);
+    transition: all .3s;
+    cursor: pointer;
+    & input {
+        display: none;
+        &:checked+.checkbox-facke {
+            background-image: url(../images/turbo-btn-active.png);
+            top: vw(10);
+            &::before {
+                background-image: url(../images/turbo.png);
+            }
+        }
+    }
+    &.disable {
+        pointer-events: none;
+    }
+    &-facke {
+        position: absolute;
+        width: vw(152);
+        height: vw(59);
+        background-image: url(../images/turbo-btn-normal.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: vw(44);
+        right: vw(8);
+        transition: all .3s;
+        &::before {
+            position: absolute;
+            content: '';
+            background-image: url(../images/turbo-dim.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: vw(105);
+            height: vw(26);
+            top: vw(14);
+            left: vw(25);
+        }
+        &:hover {
+            background-image: url(../images/turbo-btn-hover.png);
+            &::before {
+                background-image: url(../images/turbo.png);
+            }
+        }
+        &.disable {
+            background-image: url(../images/turbo-btn-disable.png);
+            pointer-events: none;
+        }
+    }
+    &.active {
+        background-image: url(../images/turbo-bg-green.png);
+    }
+}
+
+.spin-action {
+    display: none;
+    &-inner {
+        position: absolute;
+        background-image: url(../images/spin-action-bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: vw(70);
+        height: vw(75);
+        left: vw(24);
+        bottom: vw(20);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &-number {
+        text-transform: uppercase;
+        font-size: vw(38);
+        font-weight: 300;
+        color: #ffd100;
+        text-align: center;
+    }
+    &-text {
+        position: absolute;
+        left: 116%;
+        bottom: 15%;
+        text-transform: uppercase;
+        font-size: vw(40);
+        font-weight: 600;
+        color: #6a3505;
+        cursor: pointer;
+    }
+    &.action {
+        display: block;
+    }
+}
+
+.auto {
+    position: absolute;
+    bottom: vw(230);
+    right: vw(290);
+    z-index: 1;
+    &-btn {
+        position: absolute;
+        width: vw(388);
+        height: vw(100);
+        background-image: url(../images/auto-btn-normal.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        bottom: vw(7);
+        right: vw(7);
+        cursor: pointer;
+        &.hide {
+            &.auto-btn::before {
+                display: none;
+            }
+        }
+        &::before {
+            position: absolute;
+            content: '';
+            background-image: url(../images/auto-dim.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: vw(100);
+            height: vw(31);
+            top: vw(37);
+            left: vw(66);
+        }
+        &:hover {
+            background-image: url(../images/auto-btn-hover.png);
+            &::before {
+                background-image: url(../images/auto.png);
+            }
+        }
+        &-inner {
+            position: absolute;
+            width: vw(402);
+            height: vw(114);
+            bottom: vw(-6);
+            right: vw(-7);
+            z-index: 1;
+        }
+        &.active {
+            background-image: url(../images/auto-btn-active.png);
+            &::before {
+                background-image: url(../images/auto.png);
+            }
+        }
+        &.disable {
+            background-image: url(../images/auto-btn-disable.png);
+        }
+    }
+    &.disable {
+        pointer-events: none;
+    }
+    &-title {
+        text-transform: uppercase;
+        font-size: vw(32);
+        color: #ffd100;
+        padding-left: vw(50);
+        margin-top: vw(19);
+        &::after {
+            position: absolute;
+            content: '';
+            background-image: url(../images/auto-title-sign.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: vw(37);
+            height: vw(34);
+            top: vw(3);
+            left: vw(0);
+        }
+        &::before {
+            display: none !important;
+        }
+    }
+    &-list {
+        display: none;
+        position: relative;
+        top: vw(-25);
+        width: vw(388);
+        height: vw(385);
+        background-image: url(../images/auto-bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-transform: uppercase;
+        font-size: vw(32);
+        color: #ffd100;
+        padding-left: vw(30);
+        padding-top: vw(3);
+        z-index: 0;
+        &-item {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: vw(2);
+            z-index: 2;
+            &:hover {
+                color: #fff;
+            }
+            &::before {
+                position: absolute;
+                content: 'SPINS';
+                top: 0;
+                left: vw(50);
+            }
+        }
+    }
+}
+
+.spin {
+    &-btn {
+        cursor: pointer;
+        border: none;
+        display: block;
+        border-radius: 50%;
+        position: absolute;
+        height: vw(342);
+        width: vw(342);
+        background-color: transparent;
+        background-image: url(../images/spin-btn.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: all .3s;
+        top: vw(-47);
+        right: vw(127);
+        z-index: 2;
+        &:hover {
+            background-image: url(../images/spin-btn-hover.png);
+        }
+        &::before {
+            position: absolute;
+            content: '';
+            background-image: url(../images/spin-arrows.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            width: vw(232);
+            height: vw(232);
+            top: vw(55);
+            left: vw(55);
+        }
+        &.rotat {
+            &.spin-btn::before {
+                animation: rotation 700ms ease-in-out 1;
             }
         }
         &.active {
-            background-image: url(../images/turbo-bg-green.png);
-        }
-    }
-    
-    .auto {
-        position: absolute;
-        width: 388px;
-        height: 385px;
-        background-image: url(../images/auto-bg.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        bottom: 230px;
-        right: 290px;
-        z-index: 1;
-        &-checkbox {
-            & input {
-                display: none;
-                &:checked+.auto-btn {
-                    background-image: url(../images/btn-auto-click.png);
-                    &::before {
-                        background-image: url(../images/auto.png);
-                    }
-                }
-            }
-        }
-        &-btn {
-            background-color: transparent;
-            border: none;
-            border-radius: 50px;
-            position: absolute;
-            width: 388px;
-            height: 100px;
-            background-image: url(../images/btn-auto-disable.png);
-            background-repeat: no-repeat;
-            background-size: contain;
-            bottom: 7px;
-            right: 7px;
-            transition: all .3s;
-            cursor: pointer;
-            &::before {
-                position: absolute;
-                content: '';
-                background-image: url(../images/auto-dim.png);
-                background-repeat: no-repeat;
-                width: 100px;
-                height: 31px;
-                top: 33px;
-                left: 66px;
-            }
-            &:hover {
-                background-image: url(../images/btn-auto-hover.png);
-                &::before {
-                    background-image: url(../images/auto.png);
-                }
-            }
-            &-inner {
-                position: absolute;
-                width: 402px;
-                height: 114px;
-                background-image: url(../images/btn-auto-bg.png);
-                background-repeat: no-repeat;
-                background-size: contain;
-                bottom: -6px;
-                right: -7px;
-                z-index: 1;
-            }
-            &.active {
-                background-image: url(../images/btn-auto.png);
-                &::before {
-                    background-image: url(../images/auto.png);
-                }
-            }
-        }
-        &-title {
-            text-transform: uppercase;
-            font-size: 32px;
-            color: #ffd100;
-            padding-left: 64px;
-            margin-top: 19px;
-            &::before {
-                position: absolute;
-                content: '';
-                background-image: url(../images/auto-title-sign.png);
-                background-repeat: no-repeat;
-                background-size: contain;
-                width: 33px;
-                height: 30px;
-                top: 27px;
-                left: 28px;
-            }
-        }
-        &-list {
-            text-transform: uppercase;
-            font-size: 32px;
-            color: #ffd100;
-            padding-left: 30px;
-            &-item {
-                transition: all .3s;
-                cursor: pointer;
-                &:hover {
-                    color: #fff;
-                }
-            }
-        }
-    }
-    
-    .spin {
-        &-btn {
-            border: none;
-            display: block;
-            border-radius: 50%;
-            position: absolute;
-            height: 342px;
-            width: 342px;
-            background-color: transparent;
             background-image: url(../images/spin-btn-disable.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            transition: all .3s;
-            top: -47px;
-            right: 127px;
-            z-index: 2;
-            &:hover {
-                background-image: url(../images/spin-btn-hover.png);
-                &::before {
-                    background-image: url(../images/spin-arrows.png);
-                }
-            }
             &::before {
-                position: absolute;
-                content: '';
-                background-image: url(../images/spin-arrows-dim.png);
-                background-repeat: no-repeat;
-                background-position: center;
-                width: 232px;
-                height: 232px;
-                top: 55px;
-                left: 55px;
+                background-image: url(../images/stop-sign-disabled.png);
+                width: vw(150);
+                height: vw(150);
+                top: 28%;
+                left: 28%;
+                animation: none !important;
             }
-            &.active {
-                background-image: url(../images/spin-btn.png);
+            &:hover {
+                &.active {
+                    background-image: url(../images/spin-btn-hover.png);
+                }
                 &::before {
-                    background-image: url(../images/spin-arrows.png);
-                    animation: rotation 1s ease-in-out infinite;
+                    cursor: pointer;
+                    background-image: url(../images/stop-sign-active.png);
+                    width: vw(150);
+                    height: vw(150);
+                    top: 28%;
+                    left: 28%;
                 }
             }
-            &.active5 {
-                background-image: url(../images/spin-btn.png);
-                &::before {
-                    background-image: url(../images/spin-arrows.png);
-                    animation: rotation 1s ease-in-out round($number: 5);
-                }
-            }
-            &.active10 {
-                background-image: url(../images/spin-btn.png);
-                &::before {
-                    background-image: url(../images/spin-arrows.png);
-                    animation: rotation 1s ease-in-out round($number: 10);
-                }
-            }
-            &.active15 {
-                background-image: url(../images/spin-btn.png);
-                &::before {
-                    background-image: url(../images/spin-arrows.png);
-                    animation: rotation 1s ease-in-out round($number: 15);
-                }
-            }
-            &.active20 {
-                background-image: url(../images/spin-btn.png);
-                &::before {
-                    background-image: url(../images/spin-arrows.png);
-                    animation: rotation 1s ease-in-out round($number: 20);
-                }
-            }
-            &.active25 {
-                background-image: url(../images/spin-btn.png);
-                &::before {
-                    background-image: url(../images/spin-arrows.png);
-                    animation: rotation 1s ease-in-out round($number: 25);
-                }
+        }
+        &.disable {
+            animation: flash 1s ease-in-out infinite;
+            &::before {
+                background-image: url(../images/spin-btn-start.png);
+                animation: none !important;
             }
         }
     }
-    
-    @keyframes rotation {
-        0% {
-            transform: rotate(-0deg);
-        }
-        10% {
-            transform: rotate(-36deg);
-        }
-        20% {
-            transform: rotate(-72deg);
-        }
-        30% {
-            transform: rotate(-108deg);
-        }
-        40% {
-            transform: rotate(-144deg);
-        }
-        50% {
-            transform: rotate(-180deg);
-        }
-        60% {
-            transform: rotate(-216deg);
-        }
-        70% {
-            transform: rotate(-252deg);
-        }
-        80% {
-            transform: rotate(-288deg);
-        }
-        90% {
-            transform: rotate(-324deg);
-        }
-        100% {
-            transform: rotate(-360deg);
-        }
+}
+
+.instruction {
+    position: absolute;
+    text-transform: uppercase;
+    font-size: vw(28);
+    color: #ffd100;
+    top: vw(-4);
+    right: vw(500);
+    & #start {
+        display: block;
     }
+    & #autoplay {
+        display: none;
+    }
+    & #stop {
+        display: none;
+    }
+    &.disable {
+        display: none;
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(-0deg);
+    }
+    10% {
+        transform: rotate(-36deg);
+    }
+    20% {
+        transform: rotate(-72deg);
+    }
+    30% {
+        transform: rotate(-108deg);
+    }
+    40% {
+        transform: rotate(-144deg);
+    }
+    50% {
+        transform: rotate(-180deg);
+    }
+    60% {
+        transform: rotate(-216deg);
+    }
+    70% {
+        transform: rotate(-252deg);
+    }
+    80% {
+        transform: rotate(-288deg);
+    }
+    90% {
+        transform: rotate(-324deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes flash {
+    0% {
+        box-shadow: 0 0 10px #ffd100;
+    }
+    35% {
+        box-shadow: 0 0 20px #ffd100;
+    }
+    70% {
+        box-shadow: 0 0 30px #ffd100;
+    }
+    100% {
+        box-shadow: 0 0 40px #ffd100;
+    }
+}
